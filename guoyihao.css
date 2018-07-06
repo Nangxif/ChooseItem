@@ -1,0 +1,149 @@
+.form-control{
+	width: 20%;
+}
+.modal-body{
+	padding: 0px;
+}
+.modal-content{
+	border-radius: 0px;
+}
+.choose{
+	margin: 0 auto;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	width: 95%;
+	min-height: 50px;
+	border: 1px solid #c9d0d9;
+	border-radius: 4px;
+}
+.nav-tabs{
+	border-top: 1px solid #c9d0d9;
+	border-bottom: 1px solid #c9d0d9;
+	padding-left: 15px;
+}
+.nav-tabs>li{
+	margin-bottom: 0px;
+}
+/*点击后的样式*/
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+	color: #269bec;
+	font-weight: 600;
+	border: 0px;
+	border-bottom:3px solid #269bec;
+}
+a{
+	color: black;
+}
+.btn-primary{
+	background-color: #269bec;
+	border: 0px;
+}
+.btn{
+	border-radius: 0px; 
+}
+.tab-content{
+	height: 250px;
+	overflow-y: scroll;
+}
+.tab-content::-webkit-scrollbar {/*滚动条整体样式*/
+    width: 4px;     /*高宽分别对应横竖滚动条的尺寸*/
+    height: 4px;
+}
+.tab-content::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.2);
+}
+.tab-content::-webkit-scrollbar-track {/*滚动条里面轨道*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 0;
+    background: rgba(0,0,0,0.1);
+}
+.tab-pane{
+	width: 100%;
+	height: 100%;
+}
+ul{
+	padding-left: 30px;
+}
+li{
+	list-style: none;
+	cursor: pointer;
+}
+#apartment input[type="checkbox"]{
+	float: right;
+	display: none;
+}
+.checkbox_label{
+	float: right;
+
+}
+.checkbox_label:before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 13px;
+    height: 13px;
+    border:1px solid #269bec;
+}
+input[type="checkbox"]:checked+.checkbox_label:before {
+    background-color:#269bec;
+}
+p{
+	margin-right: 15px;
+}
+
+/*下拉菜单*/
+#apartment .dropdown-menu{
+	left: 3%;
+	width:97%;
+	border: 0px;
+	box-shadow: 0 0 0 transparent;
+}
+#apartment ul li ul{
+	display: none;
+}
+
+
+#self ul li ul{
+	display: none;
+}
+#self{
+	display: flex;
+}
+#self .side{
+	flex: 0 0 35%;
+	width: 35%;
+	height: 100%;
+	overflow-y: scroll;
+}
+#self .side::-webkit-scrollbar {/*滚动条整体样式*/
+    width: 7px;     /*高宽分别对应横竖滚动条的尺寸*/
+    height: 7px;
+}
+#self .side::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.2);
+}
+#self .side::-webkit-scrollbar-track {/*滚动条里面轨道*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 0;
+    background: rgba(0,0,0,0.1);
+}
+#self .detail{
+	flex: 1;
+	height: 100%;
+}
+
+
+#self .line{
+	padding-top: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
+	margin: 0px;
+}
+#self .A{
+	float: right;
+	display: none;
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script type="text/javascript" src="./template-web.js"></script>
+	<link rel="stylesheet" type="text/css" href="./guoyihao.css">
+</head>
+<body>
+	<!-- 按钮触发模态框 -->
+	<input type="text" class="form-control" data-toggle="modal" data-target="#myModal" />
+	<!-- 模态框（Modal） -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+						&times;
+					</button>
+					<h4 class="modal-title" id="myModalLabel">
+						选择成员
+					</h4>
+				</div>
+				<div class="modal-body">
+					<div class="choose"></div>
+					<ul id="myTab" class="nav nav-tabs">
+						<li class="active">
+							<a href="#apartment" data-toggle="tab">
+								 按部门选择
+							</a>
+						</li>
+						<li><a href="#self" data-toggle="tab">按人员选择</a></li>
+					</ul>
+					<div id="content-area"></div>
+					
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary">
+						确定
+					</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal -->
+	</div>
+</body>
+<script id="tem" type="text/html">
+	<div id="myTabContent" class="tab-content">
+		<div class="tab-pane fade in active" id="apartment">
+			<ul>
+				<li><p class="dropdow">{{level}}<input type="checkbox" id="{{id}}" /><label class="checkbox_label" for="{{id}}"></label></p>
+					<ul>
+						{{each childlevel as A}}
+						    <li><p class="dropdow">{{A["level"]}}<input type="checkbox" id="{{A['id']}}"/><label class="checkbox_label" for="{{A['id']}}"></label></p>
+								{{if A["childlevel"].length>0}}
+									<ul>
+										{{each A["childlevel"] as B}}
+											<li><p class="dropdow">{{B["level"]}}<input type="checkbox" id="{{B['id']}}"/><label class="checkbox_label" for="{{B['id']}}"></label></p>
+												{{if B["childlevel"].length>0}}
+													<ul>
+														{{each B["childlevel"] as C}}
+															<li><p>{{C["level"]}}<input type="checkbox" id="{{C['id']}}"/><label class="checkbox_label" for="{{C['id']}}"></label></p></li>
+														{{/each}}
+													</ul>
+												{{/if}}
+											</li>
+										{{/each}}
+									</ul>
+								{{/if}}
+						    </li>
+						{{/each}}
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="tab-pane fade" id="self">
+			<div class="side">
+				<ul>
+					<li><p class="dropdow">{{level}}<span style="display: none;">[]</span></p>
+						<ul>
+							{{each childlevel as A}}
+							    <li><p class="dropdow">{{A["level"]}}<span style="display: none;">{{A["staf"]}}</span></p>
+									{{if A["childlevel"].length>0}}
+										<ul>
+											{{each A["childlevel"] as B}}
+												<li><p class="dropdow">{{B["level"]}}<span style="display: none;">{{B["staf"]}}</span></p>
+													{{if B["childlevel"].length>0}}
+														<ul>
+															{{each B["childlevel"] as C}}
+																<li><p class="dropdow">{{C["level"]}}<span style="display: none;">{{C["staf"]}}</span></p></li>
+															{{/each}}
+														</ul>
+													{{/if}}
+												</li>
+											{{/each}}
+										</ul>
+									{{/if}}
+							    </li>
+							{{/each}}
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<div class="detail">
+				
+			</div>
+		</div>
+	</div>
+</script>
+<script type="text/javascript" src="http://www.w3school.com.cn/jquery/jquery-1.11.1.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript" src="guoyihao.js"></script>
+</html>
