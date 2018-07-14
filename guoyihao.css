@@ -147,3 +147,30 @@ p{
 	float: right;
 	display: none;
 }
+.choosebox{
+	position: relative;
+	margin: 2px;
+	padding:2px;
+	display: inline-block;
+	border: 1px solid rgba(0,0,0,0.2);
+	border-radius: 2px;
+}
+.choosebox .delete{
+	display: block;
+	position: absolute;
+	top: -7px;
+	right: -7px;
+	width:15px;
+	height: 15px;
+	background-color: white;
+	border:1px solid rgba(0,0,0,0.2);
+	border-radius: 50%;
+	text-align: center;
+	line-height: 15px;
+	font-size: 12px;
+	cursor: pointer;
+	z-index: 1;
+}
+.isExit{
+	display: none;
+}

@@ -10,7 +10,9 @@
 </head>
 <body>
 	<!-- 按钮触发模态框 -->
-	<input type="text" class="form-control" data-toggle="modal" data-target="#myModal" />
+	<input type="text" class="form-control" data-toggle="modal" data-target="#myModal" id="showModal"/>
+	<p>已选中的标签</p>
+	<ol class="showItem"></ol>
 	<!-- 模态框（Modal） -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -37,30 +39,31 @@
 					
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-primary">
+					<button type="button" class="btn btn-primary" id="sure">
 						确定
 					</button>
 				</div>
 			</div><!-- /.modal-content -->
 		</div><!-- /.modal -->
 	</div>
+
 </body>
 <script id="tem" type="text/html">
 	<div id="myTabContent" class="tab-content">
 		<div class="tab-pane fade in active" id="apartment">
 			<ul>
-				<li><p class="dropdow">{{level}}<input type="checkbox" id="{{id}}" /><label class="checkbox_label" for="{{id}}"></label></p>
+				<li><p class="dropdow">{{level}}<input type="checkbox" class="A" id="{{id}}" /><label class="checkbox_label" for="{{id}}" onclick="addItem($(this),$(this).parent().text())"></label></p>
 					<ul>
 						{{each childlevel as A}}
-						    <li><p class="dropdow">{{A["level"]}}<input type="checkbox" id="{{A['id']}}"/><label class="checkbox_label" for="{{A['id']}}"></label></p>
+						    <li><p class="dropdow">{{A["level"]}}<input type="checkbox" class="A" id="{{A['id']}}"/><label class="checkbox_label" for="{{A['id']}}" onclick="addItem($(this),$(this).parent().text())"></label></p>
 								{{if A["childlevel"].length>0}}
 									<ul>
 										{{each A["childlevel"] as B}}
-											<li><p class="dropdow">{{B["level"]}}<input type="checkbox" id="{{B['id']}}"/><label class="checkbox_label" for="{{B['id']}}"></label></p>
+											<li><p class="dropdow">{{B["level"]}}<input type="checkbox" class="A" id="{{B['id']}}"/><label class="checkbox_label" for="{{B['id']}}" onclick="addItem($(this),$(this).parent().text())"></label></p>
 												{{if B["childlevel"].length>0}}
 													<ul>
 														{{each B["childlevel"] as C}}
-															<li><p>{{C["level"]}}<input type="checkbox" id="{{C['id']}}"/><label class="checkbox_label" for="{{C['id']}}"></label></p></li>
+															<li><p>{{C["level"]}}<input type="checkbox" class="A" id="{{C['id']}}"/><label class="checkbox_label" for="{{C['id']}}" onclick="addItem($(this),$(this).parent().text())"></label></p></li>
 														{{/each}}
 													</ul>
 												{{/if}}
@@ -112,4 +115,185 @@
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script type="text/javascript" src="guoyihao.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var data={
+			level:"读书郎",
+			id:"readboy",
+			childlevel:[{
+				level:"总经办",
+				id:"all",
+				childlevel:[],
+				staf:[
+				{
+					id:"Z1",
+					level:"总经办阿七"
+				},
+				{
+					id:"Z2",
+					level:"总经办阿哥"
+				},
+				{
+					id:"Z3",
+					level:"总经办阿龙"
+				},
+				{
+					id:"Z4",
+					level:"总经办阿东"
+				},
+				{
+					id:"Z5",
+					level:"总经办阿强"
+				}]
+			},{
+				level:"市场营销",
+				id:"market",
+				childlevel:[{
+					level:"客户服务",
+					id:"service",
+					childlevel:[{
+						level:"400客服",
+						id:"service1",
+						childlevel:[],
+						staf:[
+							{
+								id:"K1",
+								level:"客服阿七"
+							},
+							{
+								id:"K2",
+								level:"客服阿哥"
+							},
+							{
+								id:"K3",
+								level:"客服阿龙"
+							},
+							{
+								id:"K4",
+								level:"客服阿东"
+							},
+							{
+								id:"Z5",
+								level:"客服阿强"
+							}]
+					}]
+				},{
+					level:"推培部",
+					id:"teach",
+					childlevel:[{
+						level:"推培一部",
+						id:"teach1",
+						childlevel:[],
+						staf:[
+							{
+								id:"T1",
+								level:"推培一部阿七"
+							},
+							{
+								id:"T2",
+								level:"推培一部阿哥"
+							},
+							{
+								id:"T3",
+								level:"推培一部阿龙"
+							},
+							{
+								id:"T4",
+								level:"推培一部阿东"
+							},
+							{
+								id:"T5",
+								level:"推培一部阿强"
+							}]
+					},{
+						level:"推培二部",
+						id:"teach2",
+						childlevel:[],
+						staf:[
+							{
+								id:"TS1",
+								level:"推培二部阿七"
+							},
+							{
+								id:"TS2",
+								level:"推培二部阿哥"
+							},
+							{
+								id:"TS3",
+								level:"推培二部阿龙"
+							},
+							{
+								id:"TS4",
+								level:"推培二部阿东"
+							},
+							{
+								id:"TS5",
+								level:"推培二部阿强"
+							}]
+					}]
+				},{
+					level:"渠道部",
+					id:"way",
+					childlevel:[{
+						level:"渠道一部",
+						id:"way1",
+						childlevel:[],
+						staf:[
+							{
+								id:"Q1",
+								level:"渠道一部阿七"
+							},
+							{
+								id:"Q2",
+								level:"渠道一部阿哥"
+							},
+							{
+								id:"Q3",
+								level:"渠道一部阿龙"
+							},
+							{
+								id:"Q4",
+								level:"渠道一部阿东"
+							},
+							{
+								id:"Q5",
+								level:"渠道一部阿强"
+							}]
+					},{
+						level:"渠道二部",
+						id:"way2",
+						childlevel:[],
+						staf:[
+							{
+								id:"QS1",
+								level:"渠道二部阿七"
+							},
+							{
+								id:"QS2",
+								level:"渠道二部阿哥"
+							},
+							{
+								id:"QS3",
+								level:"渠道二部阿龙"
+							},
+							{
+								id:"QS4",
+								level:"渠道二部阿东"
+							},
+							{
+								id:"QS5",
+								level:"渠道二部阿强"
+							}]
+					}]
+				}]
+			}]
+		};
+		var html=template('tem', data);
+		$('#content-area').html(html);
+
+		var CI=new ChooseItem();
+		CI.usefor();
+	})
+	
+</script>
 </html>
