@@ -338,10 +338,6 @@
 			}
 		}
 	}
-
-
-
-
 	ChooseItem.case = function() {
 		return new ChooseItem();
 	};
