@@ -254,7 +254,7 @@
 
 ;(function($, window, document) {
 	function ChooseItem(){
-		this.Arr=[];//左边每个下拉菜单隐藏的右边框需要显示的数据
+		this.Arr=[];//左边标签页的左边栏每个下拉菜单隐藏的右边框需要显示的数据
 		this.showModal=$("#showModal");
 		this.apDropDow=$("#apartment .dropdow");
 		this.seDropDow=$("#self .dropdow");
@@ -264,6 +264,7 @@
 		this.showModal.click(function(){//点击输入框清除所有checkbox选择状态
 			$("input[type='checkbox']").attr("checked",false);
 		});
+		//左边标签页的下拉菜单功能
 		this.apDropDow.click(function(){
 			if($(this).parent().children("ul").is(':hidden')==true){
 				$(this).parent().children("ul").css({"display":"block"});
@@ -271,6 +272,7 @@
 				$(this).parent().children("ul").css({"display":"none"});
 			}
 		})
+		//右边标签页的下拉菜单功能
 		this.seDropDow.click(function(){
 			if($(this).parent().children("ul").is(':hidden')==true){
 				$(this).parent().children("ul").css({"display":"block"});
@@ -296,6 +298,7 @@
 				}
 			}
 		})
+		//确定按钮，点击确定按钮之后获取已选择的checkbox信息，将信息添加到弹框外面，然后清除弹框里面的操作数据
 		this.sure.on("click",function(){
 			for(var n=0;n<$(".choosebox").length;n++){
 				$(".showItem").append("<li>"+$(".choosebox").eq(n).find("span").eq(1).text()+"</li>");
@@ -326,7 +329,7 @@
 	}
 	//移除choose框的项目
 	window.removeItem=function(obj){
-		var ALen=$("#tem input[type='checkbox']").length;//判断checkbox的总数
+		var ALen=$(".A").length;//判断checkbox的总数
 		var chooseId=obj.parent().find("span").eq(0).text();//要删除的选项的id
 		for(var m=0;m<ALen;m++){
 			if($(".A").eq(m).attr("id")==chooseId){
@@ -342,8 +345,6 @@
 	ChooseItem.case = function() {
 		return new ChooseItem();
 	};
-
-
 	if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
 		define(function() {
 			return ChooseItem;
@@ -353,8 +354,5 @@
 		module.exports.ChooseItem = ChooseItem;
 	} else {
 		window.ChooseItem = ChooseItem;
-		window.removeItem = removeItem;
 	}
-
-
 })(jQuery,window,document);
